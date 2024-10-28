@@ -725,7 +725,10 @@
 				<identity><![CDATA[IDENTITY]]></identity>
 			</column>
 			<column name="Description" type="varchar" length="200" jt="12" mandatory="y" >
-				<comment><![CDATA[Adding a description]]></comment>
+				<comment><![CDATA[Edited the Description
+Edited the description again
+Let's make some more changes to the description
+Adding some more changes]]></comment>
 			</column>
 			<column name="LoanTypeID" type="int" jt="4" mandatory="y" />
 			<column name="LoanStatusID" type="int" jt="4" mandatory="y" />
