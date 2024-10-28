@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="Snowflake" database="Snowflake" id="Snowflake-6a8" >
+	<schema name="DC" catalogname="APPLICATION" options="APPLICATION.DC" >
+		<table name="DOMAIN_OF_VALUE_TYPE" row_count="3" spec=" or replace" >
+			<column name="KEY_TYPE_DOMAIN_OF_VALUE" type="integer" length="38" decimal="0" jt="4" mandatory="y" >
+				<identity><![CDATA[AUTOINCREMENT]]></identity>
+			</column>
+			<column name="NAME_DOMAIN_OF_VALUE" type="varchar" length="16777216" jt="12" mandatory="y" />
+			<column name="CREATEDBY_DOMAIN_OF_VALUE" type="varchar" length="16777216" jt="12" mandatory="y" >
+				<defo><![CDATA[CURRENT_USER()]]></defo>
+			</column>
+			<column name="DATE_DOMAIN_OF_VALUE_CREATED" type="timestamp_ntz" length="9" jt="93" mandatory="y" >
+				<defo><![CDATA[CURRENT_TIMESTAMP()]]></defo>
+			</column>
+			<column name="MODIFIEDBY_DOMAIN_OF_VALUE" type="varchar" length="16777216" jt="12" mandatory="y" >
+				<defo><![CDATA[CURRENT_USER()]]></defo>
+			</column>
+			<column name="DATE_DOMAIN_OF_VALUE_MODIFIED" type="timestamp_ntz" length="9" jt="93" mandatory="y" >
+				<defo><![CDATA[CURRENT_TIMESTAMP()]]></defo>
+			</column>
+			<column name="ISACTIVE_DOMAIN_OF_VALUE" type="boolean" jt="16" mandatory="y" >
+				<defo><![CDATA[TRUE]]></defo>
+			</column>
+			<index name="UNQ_DOMAIN_OF_VALUE_TYPE_KEY_TYPE_DOMAIN_OF_VALUE" unique="UNIQUE_KEY" >
+				<column name="KEY_TYPE_DOMAIN_OF_VALUE" />
+			</index>
+		</table>
+		<table name="MAPPING_ASSET_CLASS_TERM" row_count="0" spec=" or replace" >
+			<column name="KEY_MAPPING_ASSET_CLASS_TERM" type="integer" length="38" decimal="0" jt="4" mandatory="y" >
+				<identity><![CDATA[AUTOINCREMENT]]></identity>
+			</column>
+			<column name="ID_TERM" type="integer" length="38" decimal="0" jt="4" mandatory="y" />
+			<column name="ASSETCLASSID" type="integer" length="38" decimal="0" jt="4" mandatory="y" />
+			<column name="MAPPING_ASSET_CLASS_TERM" type="varchar" length="16777216" jt="12" mandatory="y" />
+			<column name="DATE_MAPPING_EFFECTIVE_ASSET_CLASS_TERM_START" type="timestamp_ntz" length="9" jt="93" mandatory="y" >
+				<defo><![CDATA[CURRENT_TIMESTAMP()]]></defo>
+			</column>
+			<column name="DATE_MAPPING_EFFECTIVE_ASSET_CLASS_TERM_END" type="timestamp_ntz" length="9" jt="93" />
+			<column name="CREATEDBY_MAPPING_ASSET_CLASS_TERM" type="varchar" length="16777216" jt="12" mandatory="y" >
+				<defo><![CDATA[CURRENT_USER()]]></defo>
+			</column>
+			<column name="ISACTIVE_MAPPING_ASSET_CLASS_TERM" type="boolean" jt="16" mandatory="y" >
+				<defo><![CDATA[TRUE]]></defo>
+			</column>
+			<column name="HASH_MAPPING_ASSET_CLASS_TERM" type="integer" length="38" decimal="0" jt="4" mandatory="y" />
+			<fk name="FK_MAPPING_ASSET_CLASS_TERM_TERM" to_schema="APPLICATION.DC" to_table="TERM" >
+				<fk_column name="ID_TERM" pk="ID_TERM" />
+			</fk>
+		</table>
+		<table name="TERM" row_count="8" spec=" or replace" >
+			<column name="KEY_TERM" type="integer" length="38" decimal="0" jt="4" mandatory="y" >
+				<identity><![CDATA[AUTOINCREMENT]]></identity>
+			</column>
+			<column name="ID_TERM" type="integer" length="38" decimal="0" jt="4" mandatory="y" />
+			<column name="NAME_TERM" type="varchar" length="16777216" jt="12" mandatory="y" />
+			<column name="DEFINITION_TERM" type="varchar" length="16777216" jt="12" mandatory="y" />
+			<column name="KEY_TERM_DATATYPE" type="integer" length="38" decimal="0" jt="4" mandatory="y" />
+			<column name="KEY_TYPE_DOMAINOFVALUE_TERM" type="integer" length="38" decimal="0" jt="4" mandatory="y" />
+			<column name="SQLNAME_TERM" type="varchar" length="16777216" jt="12" mandatory="y" />
+			<column name="TERM_IS_DI_MAPPABLE_PRE" type="boolean" jt="16" mandatory="y" />
+			<column name="TERM_IS_DI_MAPPABLE_CLOSING" type="boolean" jt="16" mandatory="y" />
+			<column name="TERM_IS_DI_MAPPABLE_POST" type="boolean" jt="16" mandatory="y" />
+			<column name="DATE_EFFECTIVE_TERM_START" type="timestamp_ntz" length="9" jt="93" mandatory="y" >
+				<defo><![CDATA[CURRENT_TIMESTAMP()]]></defo>
+			</column>
+			<column name="DATE_EFFECTIVE_TERM_END" type="timestamp_ntz" length="9" jt="93" />
+			<column name="CREATEDBY_TERM" type="varchar" length="16777216" jt="12" mandatory="y" >
+				<defo><![CDATA[CURRENT_USER()]]></defo>
+			</column>
+			<column name="ISACTIVE_TERM" type="boolean" jt="16" mandatory="y" >
+				<defo><![CDATA[TRUE]]></defo>
+			</column>
+			<column name="HASH_TERM" type="integer" length="38" decimal="0" jt="4" mandatory="y" />
+			<index name="UNQ_TERM_ID_TERM" unique="UNIQUE_KEY" >
+				<column name="ID_TERM" />
+			</index>
+			<fk name="FK_TERM_DOMAIN_OF_VALUE_TYPE" to_schema="APPLICATION.DC" to_table="DOMAIN_OF_VALUE_TYPE" >
+				<fk_column name="KEY_TYPE_DOMAINOFVALUE_TERM" pk="KEY_TYPE_DOMAIN_OF_VALUE" />
+			</fk>
+		</table>
+		<table name="TERM_ASSET_CLASS" row_count="208" spec=" or replace" >
+			<column name="KEY_ASSSET_CLASS_TERM" type="integer" length="38" decimal="0" jt="4" mandatory="y" >
+				<identity><![CDATA[AUTOINCREMENT]]></identity>
+			</column>
+			<column name="ID_TERM" type="integer" length="38" decimal="0" jt="4" mandatory="y" />
+			<column name="ASSETCLASSID" type="integer" length="38" decimal="0" jt="4" mandatory="y" />
+			<column name="DATE_EFFECTIVE_ASSET_CLASS_TERM_START" type="timestamp_ntz" length="9" jt="93" mandatory="y" >
+				<defo><![CDATA[CURRENT_TIMESTAMP()]]></defo>
+			</column>
+			<column name="DATE_EFFECTIVE_ASSET_CLASS_TERM_END" type="timestamp_ntz" length="9" jt="93" />
+			<column name="CREATEDBY_ASSET_CLASS_TERM" type="varchar" length="16777216" jt="12" mandatory="y" >
+				<defo><![CDATA[CURRENT_USER()]]></defo>
+			</column>
+			<column name="ISACTIVE_ASSET_CLASS_TERM" type="boolean" jt="16" mandatory="y" >
+				<defo><![CDATA[TRUE]]></defo>
+			</column>
+			<column name="HASH_ASSET_CLASS_TERM" type="integer" length="38" decimal="0" jt="4" mandatory="y" />
+			<fk name="FK_TERM_ASSET_CLASS_TERM" to_schema="APPLICATION.DC" to_table="TERM" >
+				<fk_column name="ID_TERM" pk="ID_TERM" />
+			</fk>
+		</table>
+		<table name="TERM_DOMAIN_OF_VALUE" row_count="1" spec=" or replace" >
+			<column name="KEY_DOMAIN_OF_VALUE_TERM" type="integer" length="38" decimal="0" jt="4" mandatory="y" >
+				<identity><![CDATA[AUTOINCREMENT]]></identity>
+			</column>
+			<column name="ID_TERM" type="integer" length="38" decimal="0" jt="4" mandatory="y" />
+			<column name="ASSETCLASSID" type="integer" length="38" decimal="0" jt="4" mandatory="y" />
+			<column name="KEYU_TYPE_DOMAIN_OF_VALUE" type="integer" length="38" decimal="0" jt="4" mandatory="y" />
+			<column name="VALUE_LIST_DOMAIN_OF_VALUE_TERM" type="varchar" length="16777216" jt="12" />
+			<column name="NUMERIC_SCALE_DOMAIN_OF_VALUE_TERM" type="integer" length="38" decimal="0" jt="4" />
+			<column name="NUMERIC_PRECISION_DOMAIN_OF_VALUE_TERM" type="integer" length="38" decimal="0" jt="4" />
+			<column name="NUMERIC_MAX_DOMAIN_OF_VALUE_TERM" type="integer" length="38" decimal="0" jt="4" />
+			<column name="NUMERIC_MIN_DOMAIN_OF_VALUE_TERM" type="integer" length="38" decimal="0" jt="4" />
+			<column name="DATE_MIN_DOMAIN_OF_VALUE_TERM" type="date" jt="91" />
+			<column name="DATE_MAX_DOMAIN_OF_VALUE_TERM" type="date" jt="91" />
+			<column name="DATE_EFFECTIVE_DOMAIN_OF_VALUE_TERM_START" type="timestamp_ntz" length="9" jt="93" mandatory="y" >
+				<defo><![CDATA[CURRENT_TIMESTAMP()]]></defo>
+			</column>
+			<column name="DATE_EFFECTIVE_DOMAIN_OF_VALUE_TERM_END" type="timestamp_ntz" length="9" jt="93" />
+			<column name="CREATEDBY_DOMAIN_OF_VALUE_TERM" type="varchar" length="16777216" jt="12" mandatory="y" >
+				<defo><![CDATA[CURRENT_USER()]]></defo>
+			</column>
+			<column name="ISACTIVE_DOMAIN_OF_VALUE_TERM" type="boolean" jt="16" mandatory="y" >
+				<defo><![CDATA[TRUE]]></defo>
+			</column>
+			<column name="HASH_DOMAIN_OF_VALUE_TERM" type="integer" length="38" decimal="0" jt="4" mandatory="y" />
+			<fk name="FK_TERM_DOMAIN_OF_VALUE_TERM" to_schema="APPLICATION.DC" to_table="TERM" >
+				<fk_column name="ID_TERM" pk="ID_TERM" />
+			</fk>
+		</table>
+		<table name="TERM_MAPPING" row_count="0" spec=" or replace" >
+			<column name="KEY_MAPPING_TERM" type="integer" length="38" decimal="0" jt="4" mandatory="y" >
+				<identity><![CDATA[AUTOINCREMENT]]></identity>
+			</column>
+			<column name="ID_TERM" type="integer" length="38" decimal="0" jt="4" mandatory="y" />
+			<column name="KEY_PAYLOAD" type="integer" length="38" decimal="0" jt="4" />
+			<column name="MAPPING_TERM" type="varchar" length="16777216" jt="12" mandatory="y" />
+			<column name="DATE_MAPPING_EFFECTIVE_TERM_START" type="timestamp_ntz" length="9" jt="93" mandatory="y" >
+				<defo><![CDATA[CURRENT_TIMESTAMP()]]></defo>
+			</column>
+			<column name="DATE_MAPPING_EFFECTIVE_TERM_END" type="timestamp_ntz" length="9" jt="93" />
+			<column name="CREATEDBY_MAPPING_TERM" type="varchar" length="16777216" jt="12" mandatory="y" >
+				<defo><![CDATA[CURRENT_USER()]]></defo>
+			</column>
+			<column name="ISACTIVE_MAPPING_TERM" type="boolean" jt="16" mandatory="y" >
+				<defo><![CDATA[TRUE]]></defo>
+			</column>
+			<column name="HASH_MAPPING_TERM" type="integer" length="38" decimal="0" jt="4" mandatory="y" />
+			<fk name="FK_TERM_MAPPING_TERM" to_schema="APPLICATION.DC" to_table="TERM" >
+				<fk_column name="ID_TERM" pk="ID_TERM" />
+			</fk>
+		</table>
+	</schema>
+	<layout name="Main Layout" id="Layout-6d5" show_relation="columns" >
+		<comment><![CDATA[Nomenclature Data Model v0.1]]></comment>
+		<entity schema="APPLICATION.DC" name="DOMAIN_OF_VALUE_TYPE" color="BED3F4" x="384" y="80" />
+		<entity schema="APPLICATION.DC" name="MAPPING_ASSET_CLASS_TERM" color="BED3F4" x="704" y="816" />
+		<entity schema="APPLICATION.DC" name="TERM" color="BED3F4" x="432" y="352" />
+		<entity schema="APPLICATION.DC" name="TERM_ASSET_CLASS" color="BED3F4" x="48" y="544" />
+		<entity schema="APPLICATION.DC" name="TERM_DOMAIN_OF_VALUE" color="BED3F4" x="784" y="480" />
+		<entity schema="APPLICATION.DC" name="TERM_MAPPING" color="BED3F4" x="160" y="784" />
+		<group name="DOMAIN_OF_VALUE_TYPE" color="ECF0F7" >
+			<entity schema="APPLICATION.DC" name="TERM_ASSET_CLASS" />
+			<entity schema="APPLICATION.DC" name="DOMAIN_OF_VALUE_TYPE" />
+			<entity schema="APPLICATION.DC" name="TERM_DOMAIN_OF_VALUE" />
+			<entity schema="APPLICATION.DC" name="TERM" />
+			<entity schema="APPLICATION.DC" name="TERM_MAPPING" />
+			<entity schema="APPLICATION.DC" name="MAPPING_ASSET_CLASS_TERM" />
+		</group>
+	</layout>
+</project>
