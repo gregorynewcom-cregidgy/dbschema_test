@@ -728,7 +728,8 @@
 				<comment><![CDATA[Edited the Description
 Edited the description again
 Let's make some more changes to the description
-Adding some more changes]]></comment>
+Adding some more changes
+One last try]]></comment>
 			</column>
 			<column name="LoanTypeID" type="int" jt="4" mandatory="y" />
 			<column name="LoanStatusID" type="int" jt="4" mandatory="y" />
